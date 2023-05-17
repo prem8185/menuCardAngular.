@@ -1,0 +1,98 @@
+<div class="header">
+  <div class="logo">
+    <ng-container *ngFor="let item of getUniqueTypes(); let first = first">
+      <img [src]=" 'data:image/jpeg;base64,' + item.logo" *ngIf="first" alt="Hotel Logo" class="logo-image" />
+    </ng-container>
+  </div>
+</div>
+
+
+
+<div class="main">
+  <div class="plus-icon" (click)="openpopup()">
+    <i class="fas fa-plus"></i>
+  </div>
+
+  <div class="overlay" *ngIf="showPopup">
+    <div class="content">
+      <div class="close">&times;</div>
+      <form [formGroup]="addType">
+        <div class="form-group">
+          <label for="typeName">Type Name</label>
+          <input type="text" class="form-control" id="typeName" formControlName="typeName">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" formControlName="price">
+        </div>
+        <div class="form-group">
+          <label for="itemName">Item Name</label>
+          <input type="text" class="form-control" id="itemName" formControlName="itemName">
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="file" class="form-control" id="image" formControlName="image">
+        </div>
+        <button class="btn btn-primary mt-2" (click)="closepopup()">ADD A TYPE</button>
+      </form>
+
+    </div>
+  </div>
+
+  <div>
+    <div class="card">
+      <ng-container *ngFor="let item of getUniqueTypes()">
+
+        <button (click)="toggleList(item.type_id)" class="button">
+          {{ item.type_name }}
+        </button>
+
+        <div *ngIf="showList === item.type_id">
+
+          <div class="notice-marquee">
+            <marquee>{{ item.notice }}</marquee>
+          </div>
+
+          <ul>
+            <li *ngFor="let filteredItem of getFilteredItems(item.type_id)">
+              <div class="item-details">
+                <div class="col-md-12 row">
+                  <div class="col-md-2">
+
+                    <img [src]="
+                        'data:image/jpeg;base64,' + filteredItem.item_image
+                      " alt="Item Image" class="item-image" />
+                  </div>
+                  <div class="col-md-2 Naveen">
+                    <p>Id: {{ filteredItem.type_id }}</p>
+                  </div>
+                  <div class="col-md-2 Naveen">
+                    <p>Item Name: {{ filteredItem.item_name }}</p>
+                  </div>
+                  <div class="col-md-2 Naveen">
+                    <p>Price: {{ filteredItem.price }}</p>
+                  </div>
+                  <div class="col-md-2 Naveen">
+                    <p>Description: {{ filteredItem.description }}</p>
+                  </div>
+                </div>
+                <button (click)="deleteItem(filteredItem.item_id)"><i class="fas fa-trash-alt"></i>
+
+                </button>
+
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+
+
+</div>

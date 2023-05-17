@@ -1,0 +1,69 @@
+<div class="parent-div">
+
+    <div class="container">
+
+
+
+        <div class="smallContainer card col-md-5 m-3">
+
+
+            <div class="containerlogo">
+                <img src="\assets\apt logo 2.png" alt="Logo" class="logo-image">
+            </div>
+
+            <form action="" [formGroup]="registrationForm">
+                <h2 class="col-md-12">Registration</h2>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Business Name :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="text" class="form-control" name="" id=""
+                            formControlName="businessName"></div>
+                </div>
+
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Type of Business :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="text" class="form-control" name="" id=""
+                            formControlName="typeOfBusiness"></div>
+                </div>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Email :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="email" class="form-control" name="" id=""
+                            formControlName="email"></div>
+                </div>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Contact Person Name :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="text" class="form-control" name="" id=""
+                            formControlName="contactpersonName"></div>
+                </div>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Address :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="text" class="form-control" name="" id=""
+                            formControlName="address"></div>
+                </div>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Password :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="password" class="form-control" name="" id=""
+                            formControlName="password" [(ngModel)]="password"></div>
+                </div>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Confirm Password :<sup class="text-danger">*</sup></div>
+                    <div class="input col-5 "><input type="password" class="form-control" name="" id=""
+                            formControlName="confirmPassword" [(ngModel)]="confirmPassword" (input)="checkPassword()">
+                        <div *ngIf="passwordMatch" class="text-danger"><small>Password doesnot Match</small></div>
+                    </div>
+                </div>
+                <div class="inlineContainer col-12 row m-2">
+                    <div class="label col-5">Business Logo :</div>
+                    <div class="input col-5 "><input type="file" class="form-control" name="" id=""
+                            formControlName=" businessLogo" (change)="onFileSave($event)"></div>
+                </div>
+                <div class="inlineContainer col-12 row m-2 ">
+                    <div class="label col-12 button"> <button type="button" (click)="register()" class="btn btn-primary"
+                            [disabled]="registrationForm.invalid">Register</button></div>
+                </div>
+            </form>
+            <div class="powered-by">
+                Powered By <a href="https://www.aptits.com/Home" target="_blank" rel="noreferrer">API IT Solutions</a>
+            </div>
+        </div>
+    </div>
+</div>
